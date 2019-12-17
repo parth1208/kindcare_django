@@ -120,9 +120,9 @@ def cart(request,pk):
         obj.save()
 
     return redirect(Product)
+    #hello
 
 def my_cart(request):
     obj=Cart.objects.filter(buyer=request.user)
     cart_total=Cart.objects.aggregate(Sum('total'))
     return render(request,'cart.html',{'cart':obj,'no':len(obj),'total':cart_total['total__sum']})
-
