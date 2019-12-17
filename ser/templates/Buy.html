@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block menu %}
+	<li class="nav-item "><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+	<li class="nav-item " ><a href="{% url 'Product' %}" class="nav-link">Property</a></li>
+	<li class="nav-item"><a href="{% url 'agents' %}" class="nav-link">Agents</a></li>
+	<li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+	<li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    body{
+        background-image: url({% static 'images/bg_1.jpg' %})
+        }
+        
+        .bordered {
+          border: 1px solid black;
+          border-radius: 8px;
+        }
+        .borderform {
+          border: 1px solid white;
+          border-radius: 8px;
+        }
+    .secondary {
+        color:blue
+        }
+
+</style>
+
+
+
+
+<section class="ftco-section contact-section "  style="align-self: center">
+   
+  <div class="container" style="align-self: center">
+      
+        
+      <div class="row block-8" style="align-self: center" >
+        <div class="col-md-5 borderform" style="align-self:center;margin-left:30%;padding-top:1%;  width:40%; background-color:white">
+           
+          <form action="{% url 'signup' %}" method="POST" >
+              {% csrf_token %}
+            <center>
+            <h2>
+              <strong>
+                Buy Now
+              </strong>
+            </h2>
+            <hr>
+        </center>
+            <div class="form-group">
+             
+              <input type="text" class="form-control bordered" placeholder="Name" name="name" required>
+            </div>
+            <div class="form-group" >
+                    <select type="text" class="form-control bordered" name="City">
+                            <option value="City">---Select city----</option>
+                            <option value="City">Surat</option>
+                                     
+                    </select>    
+            </div>
+            <div class="form-group" >
+                    <input type="text" class="form-control bordered" name="address" placeholder="Address">    
+            </div>
+            <div class="form-group">
+                
+                <input type="tel" class="form-control bordered" name="phoneno" placeholder="Phone No">
+              </div>
+            <div class="form-group">
+                    <input type="email" class="form-control bordered" placeholder="Email" name="Email" required>
+            </div>
+              <div class="form-group"><center>
+              <input type="submit" value="Buy" class="btn btn-primary py-3 px-5" style="  background-color: blue" >
+            </center>
+            </div>
+            <center>
+                {{Message}}
+            </center>
+          </form>
+        
+        </div>
+      </center>
+</section>
+{% endblock %}

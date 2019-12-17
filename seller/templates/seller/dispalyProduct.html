@@ -1,0 +1,115 @@
+{% extends 'seller/base.html' %}
+{% load static %}
+{% block content %}
+  
+<div class="dashboard-wrapper">
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title"> Seller panel </h2>
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page"> Product-list </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
+
+                              <div class="card">
+                                <center><h5 class="card-header">All Product</h5></center> 
+                                  <div class="card-body p-0">
+                                      <div class="table-responsive">
+                                          <table class="table">
+                                              <thead class="bg-light">
+                                                  <tr class="border-0">
+                                                      <th class="border-0">No</th>
+                                                      <th class="border-0" style="width: 10px; height:10px;">Image</th>
+                                                      <th class="border-0">Product Name</th>
+                                                      <th class="border-0">Category</th>
+                                                      <th class="border-0">Sub Category</th>
+                                                      <th class="border-0">Price</th>
+                                                      <th class="border-0">Discount</th>
+                                                      <th class="border-0" >Product Description</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                  {% for user in obj %}
+                                                  <tr>
+                                                      <td >{{ user.id }}</td>
+                                                      <td>
+                                                          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+                                                          <body>
+                                                              <img src="{{ user.Product_image.url }}" style="width:70px; cursor:pointer" onclick="onClick(this)" class="w3-hover-opacity">
+                                                            
+                                                          <div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+                                                            <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+                                                            <div class="w3-modal-content w3-animate-zoom">
+                                                              <img id="img01" style="width:100%">
+                                                            </div>
+                                                          </div>
+                                                          
+                                                          <script>
+                                                          function onClick(element) {
+                                                            document.getElementById("img01").src = element.src;
+                                                            document.getElementById("modal01").style.display = "block";
+                                                          }
+                                                          </script>
+                                                      </td>
+                                                      <td>{{ user.product_name }} </td>
+                                                      <td>{{ user.cat }}</td>
+                                                      <td>{{ user.cat_sub }}</td>
+                                                      <td>₹{{ user.Product_Price }}</td>
+                                                      <td>₹{{ user.discount}}</td>
+                                                      <td>{{ user.Product_Description|slice:":15" }}</td>
+                                                  </tr>
+                                                  {% endfor %}
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  </div>
+                              </div>
+        
+                              <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center ">
+                                  <li class="page-item">
+                              {% if obj.has_other_pages %}
+                                  {% if obj.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ obj.previous_page_number }}">&laquo;</a></li>
+                                  {% else %}
+                                    <li class="disabled page-item"><a class="page-link"> <span>&laquo;</span> </a></li>
+                                  {% endif %}
+                                  {% for i in obj.paginator.page_range %}
+                                    {% if obj.number == i %}
+                                      <li class=" page-item active">
+                                        <a class="page-link"> <span>{{ i }} <span class="sr-only">(current)</span></span> </a></li>
+                                    {% else %}
+                                      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% if obj.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ obj.next_page_number }}">&raquo;</a></li>
+                                  {% else %}
+                                    <li class="disabled "><a class="page-link"><span>&raquo;</span></a></li>
+                                  {% endif %}
+                              {% endif %}   
+                            </li>
+                          </ul>
+                        </nav>      
+                      </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

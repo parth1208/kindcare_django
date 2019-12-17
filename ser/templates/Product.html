@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block menu %}
+	<li class="nav-item "><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+	<li class="nav-item active" ><a href="{% url 'Product' %}" class="nav-link">Products</a></li>
+	<li class="nav-item"><a href="{% url 'agents' %}" class="nav-link">Agents</a></li>
+	<li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+	<li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+
+<div class="hero-wrap" style="background-image: url({% static 'images/bg_1.jpg' %});">
+	<div class="overlay"></div>
+	<div class="container">
+	  <div class="row no-gutters slider-text align-items-center justify-content-center">
+		<div class="col-md-9 ftco-animate text-center">
+		  <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Product</span></p>
+		  <h1 class="mb-3 bread">Product</h1>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+
+<section class="ftco-section bg-light">
+<div class="container">
+<div class="row">
+		{% for i in product %}
+  <div class="col-md-4 ftco-animate">
+		<div class="properties" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 20px;">
+			<a href="{% url 'Products-list' pk=i.pk %}" class="img img-2 d-flex justify-content-center align-items-center " style=" background-image: url('{{ i.Product_image.url }}'); border-radius: 20px 20px 0px 0px;">
+				<div class="icon d-flex justify-content-center align-items-center">
+					<span class="icon-search2"></span>
+				</div>
+			</a>
+			<div class="text p-3">
+				
+				<div class="d-flex">
+					<div class="one">
+						<h3><a href="{% url 'Products-list' pk=i.pk %}"> {{ i.product_name }}</a></h3>
+						<p>{{ i.cat }}</p>
+					</div>
+				<div class="two">
+						<span class="price">₹{{ i.Product_Price }}</span>
+					</div>
+				</div>
+				<p>{{ i.Product_Description }}</p>
+				<hr>
+				<p class="bottom-area d-flex">
+					<span><i class="flaticon-selection"></i> 250sqft</span>
+					<span class="ml-auto"><a href="{% url 'cart' pk=i.pk %}"><img src="{% static 'cart/car.png' %}"  style="width:30px; height:30px;"></span>
+				</p>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+<div class="row mt-5">
+<div class="col text-center">
+<div class="block-27">
+  <ul>
+	<li><a href="#">&lt;</a></li>
+	<li class="active"><span>1</span></li>
+	<li><a href="#">2</a></li>
+	<li><a href="#">3</a></li>
+	<li><a href="#">4</a></li>
+	<li><a href="#">5</a></li>
+	<li><a href="#">&gt;</a></li>
+  </ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}

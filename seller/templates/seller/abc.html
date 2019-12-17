@@ -1,0 +1,93 @@
+{% extends 'seller/base.html' %}
+{% load static %}
+{% block content %}       
+
+<div class="dashboard-wrapper">
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title"> Seller panel </h2>
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page"> Product-list </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
+
+
+                        <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                        <th>Product Id</th>
+                                        <th>Product name</th>
+                                        <th>Category</th>
+                                        <th>Sub Category</th>
+                                        <th>Product Price</th>
+                                        <th>Discount</th>
+                                        <th>Product Description</th>
+                                        <th>Product image</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {% for user in obj %}
+                                  <tr>
+                                        <td>{{ user.id }}</td>
+                                        <td>{{ user.product_name }}</td>
+                                        <td>{{ user.cat }}</td>
+                                        <td>{{ user.cat_sub }}</td>
+                                        <td>{{ user.Product_Price }}</td>
+                                        <td>{{ user.discount}}</td>
+                                        <td>{{ user.Product_Description }}</td>
+                                        <td><image src="{{ user.Product_image.url }}" style="max-width: 100px;max-height:  100px;"></image></td>
+                                      </tr>
+                                  {% endfor %}
+                                </tbody>
+                              </table>
+                              
+                              
+
+                              <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center ">
+                                  <li class="page-item">
+                              {% if obj.has_other_pages %}
+                                  {% if obj.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ obj.previous_page_number }}">&laquo;</a></li>
+                                  {% else %}
+                                    <li class="disabled page-item"><a class="page-link"> <span>&laquo;</span> </a></li>
+                                  {% endif %}
+                                  {% for i in obj.paginator.page_range %}
+                                    {% if obj.number == i %}
+                                      <li class=" page-item active">
+                                        <a class="page-link"> <span>{{ i }} <span class="sr-only">(current)</span></span> </a></li>
+                                    {% else %}
+                                      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                  {% endfor %}
+                                  {% if obj.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ obj.next_page_number }}">&raquo;</a></li>
+                                  {% else %}
+                                    <li class="disabled "><a class="page-link"><span>&raquo;</span></a></li>
+                                  {% endif %}
+                              {% endif %}   
+                            </li>
+                          </ul>
+                        </nav>      
+                      </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

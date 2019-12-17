@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block menu %}
+	<li class="nav-item "><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+	<li class="nav-item " ><a href="{% url 'Product' %}" class="nav-link">Products</a></li>
+	<li class="nav-item"><a href="{% url 'agents' %}" class="nav-link">Agents</a></li>
+	<li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+	<li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    body{
+        background-image: url({% static 'images/bg_1.jpg' %})
+        }
+        
+        .bordered {
+          border: 1px solid black;
+          border-radius: 8px;
+        }
+        .borderform {
+          border: 1px solid white;
+          border-radius: 8px;
+        }
+    .secondary {
+        color:blue
+        }
+        
+
+</style>
+
+
+
+
+<section class="ftco-section contact-section "  style="align-self: center">
+   
+  <div class="container" style="align-self: center">
+      
+        
+      <div class="row block-8" style="align-self: center" >
+        <div class="col-md-5 borderform" style="align-self:center;margin-left:30%;padding-top:1%;  width:40%; background-color:white">
+           
+          <form action="{% url 'signup' %}" method="POST" >
+              {% csrf_token %}
+            <center>
+            <h2>
+              <strong>
+                Registration
+              </strong>
+            </h2>
+            <hr>
+        </center>
+        <center><div class="form-group">
+          <a href="#" class="btn btn-danger ftco-animate" role="button"><span class="icon-google"></span></a></li>
+          <a href="#" class="btn btn-danger ftco-animate" role="button" style="background-color:mediumblue"><span class="icon-facebook"></span></a></li>
+          <a href="#" class="btn btn-danger ftco-animate" role="button" style="background-color:#bc2A8d"><span class="icon-instagram"></span></a></li>
+      </div></center>
+      
+          <hr>
+
+            <div class="form-group">
+             
+              <input type="text" class="form-control bordered" placeholder="Name" name="name" required>
+            </div>
+            <div class="form-group" >
+                
+              <input type="email" class="form-control bordered" placeholder="Email" name="Email" required>
+            </div>
+            <div class="form-group" >
+              <select type="text" name="Type" class="form-control bordered" name="Type" required>
+                      <option value="Customer"> Customer </option>
+                      <option value="Seller"> Seller </option>
+                               
+              </select>    
+            </div>
+            <div class="form-group">
+                
+                <input type="tel" class="form-control bordered" name="phoneno" placeholder="Phone No" required>
+              </div>
+            <div class="form-group">
+                
+              <input type="password" class="form-control bordered" name="password1" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                
+                <input type="password" class="form-control bordered" name="password2" placeholder="Confirm-Password" required>
+              </div>
+              <div class="form-group"><center>
+              <input type="submit" value="Submit" class="btn btn-primary py-3 px-5" style="  background-color: blue" >
+            </center>
+            </div>
+            <center style="color: red;">
+                {{Message}}
+            </center>
+            <center>
+                <p>Already member? <a href="{% url 'signin' %}" class="secondary" color:"blue">Login Here.</a></p>
+              </center>
+
+          </form>
+        
+        </div>
+      </center>
+</section>
+{% endblock %}
