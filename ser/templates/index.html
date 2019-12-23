@@ -120,87 +120,21 @@
 <section class="ftco-section bg-light">
 		<div class="container">
 		  <div class="row d-flex ">
+			{% for i in obj %}
 			<div class="col-md-3 d-flex align-self-stretch ftco-animate oppanding">
-			  <div class="media block-6 services py-4 d-block text-center oppanding">
-				<div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-housekeeping"></span></div></div>
-				<div class="media-body p-2 mt-2">
-				  <h3 class="heading mb-3" >Maid </h3>
-				  <p>A small river named Duden flows by their place and supplies.</p>
-				</div>
-			  </div>      
-			</div>
-			<div class="col-md-3 d-flex align-self-stretch ftco-animate oppanding">
-			  <div class="media block-6 services py-4 d-block text-center oppanding">
-				<div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-tap"></span></div></div>
-				<div class="media-body p-2 mt-2">
-				  <h3 class="heading mb-3"> Plumber </h3>
-				  <p>A small river named Duden flows by their place and supplies.</p>
-				</div>
-			  </div>    
-			</div>
-			<div class="col-md-3 d-flex align-sel Searchf-stretch ftco-animate oppanding">
-			  <div class="media block-6 services py-4 d-block text-center oppanding">
-				<div class="d-flex justify-content-center"><div  class="icon"><span class="flaticon-varnish"></span></div></div>
-				<div class="media-body p-2 mt-2">
-				  <h3 class="heading mb-3"> Painter </h3>
-				  <p>A small river named Duden flows by their place and supplies.</p>
-				</div>
-			  </div>      
-			</div>
-			<div class="col-md-3 d-flex align-self-stretch ftco-animate oppanding">
-			  <div class="media block-6 services py-4 d-block text-center oppanding">
-				<div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-carpenter"></span></div></div>
-				<div class="media-body p-2 mt-2">
-				  <h3 class="heading mb-3"> Carpentry </h3>
-				  <p>A small river named Duden flows by their place and supplies.</p>
-				</div>
-			  </div>      
-			</div>
-  
-			
-  
-  
-  
-			  <div class="col-md-3 d-flex align-self-stretch ftco-animate oppanding">
 				<div class="media block-6 services py-4 d-block text-center oppanding">
-				  <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-electrician"></span></div></div>
-				  <div class="media-body p-2 mt-2">
-					<h3 class="heading mb-3"> Electric Repairing </h3>
-					<p>A small river named Duden flows by their place and supplies.</p>
-				  </div>
-				</div>      
-			  </div>
-			  <div class="col-md-3 d-flex align-self-stretch ftco-animate oppanding">
-				<div class="media block-6 services py-4 d-block text-center oppanding">
-				  <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-postal"></span></div></div>
-				  <div class="media-body p-2 mt-2">
-					<h3 class="heading mb-3"> Speed Post </h3>
-					<p>A small river named Duden flows by their place and supplies.</p>
-				  </div>
-				</div>    
-			  </div>
-			  <div class="col-md-3 d-flex align-sel Searchf-stretch ftco-animate oppanding">
-				<div class="media block-6 services py-4 d-block text-center oppanding">
-				  <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-sketch"></span></div></div>
-				  <div class="media-body p-2 mt-2">
-					<h3 class="heading mb-3"> Inteior Desigining </h3>
-					<p>A small river named Duden flows by their place and supplies.</p>
-				  </div>
-				</div>      
-			  </div>
-			  <div class="col-md-3 d-flex align-self-stretch ftco-animate oppanding">
-				<div class="media block-6 services py-4 d-block text-center oppanding">
-				  <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-watering-plant"></span></div></div>
-				  <div class="media-body p-2 mt-2">
-					<h3 class="heading mb-3">  Garderning </h3>
-					<p>A small river named Duden flows by their place and supplies.</p>
-				  </div>
-				</div>      
-			  </div>
-			 </div>
-		  </div>
-		</section>
-		
+				<div class="d-flex justify-content-center"><div class="icon"><span class="{{ i.icon }}"></span></div></div>
+				<div class="media-body p-2 mt-2">
+				  <h3 class="heading mb-3" > {{ i.service_Name }} </h3>
+				  <p>{{ i.service_Description }}</p>
+				</div>
+			  </div> 
+			</div>
+			{% endfor %}  		
+			</div>
+		</div>
+</section>
+	
 	  
 	  
 	  

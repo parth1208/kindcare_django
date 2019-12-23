@@ -10,12 +10,12 @@
 {% block content %}
 
 
-<section>
+<section class="ftco-section contact-section" style="background-image: url({% static 'images/bg_1.jpg' %});">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-9">
 
-<div class="card">
+<div class="card" style="border-radius: 8px;">
     <center><h5 class="card-header">All Product</h5></center> 
       <div class="card-body p-0">
           <div class="table-responsive">
@@ -72,13 +72,17 @@
       </div>
   </div>
 </div>
-<div class="col-md-4">
-Total Items:-  <h1> {{no}}</h1>
-Total Pries  <h1> {{total}}</h1>
+<div class="col-md-3 tabel bg-light" style="width: 225px; height:225px; border-radius: 8px;">
+<center>Total Items  
+<h1> {{no}}</h1> 
+ Total Pries 
+<h1> {{total}}</h1>
+
+<input type="submit" value="ORDER"  class="" style="background-color:orange; color:white; width:75px; height:30px; border-radius: 8px;" ><br>
+
+</center>
 </div>
 
-  
-  
 
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center ">

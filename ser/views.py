@@ -8,19 +8,20 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.conf import settings
 from django.contrib.auth import authenticate, login,logout
-from . models import Cart
+from . models import *
 from seller.models import *
 from django.db.models import Sum
 
 # Create your views here.
 def index(request):
+    obj=Service_Categary.objects.all()
     if request.user.is_authenticated:
         if request.user.is_customer:
-            return render (request,'index.html')
+            return render (request,'index.html',{'obj':obj})
         else:
             return render(request,'seller/index_admin.html')
     else:
-        return render (request,'index.html')
+        return render (request,'index.html',{'obj':obj})
 
 def Product(request):
     product=ProductDetails.objects.all()
@@ -99,7 +100,7 @@ def logout_user(request):
     
     email_subject = 'Interest shown in your property'
     email_from = settings.EMAIL_HOST_USER
-    email='parthmangukiya1208@gmail.com'
+    email=request.user.email
     sendmail(email_subject,'mail',email,{'name':'logout your account'})
     logout(request)
     return redirect(index)
