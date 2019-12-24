@@ -121,14 +121,17 @@
 		<div class="container">
 		  <div class="row d-flex ">
 			{% for i in obj %}
-			<div class="col-md-3 d-flex align-self-stretch ftco-animate oppanding">
-				<div class="media block-6 services py-4 d-block text-center oppanding">
-				<div class="d-flex justify-content-center"><div class="icon"><span class="{{ i.icon }}"></span></div></div>
+			<div class="col-md-3 d-flex align-self-stretch ftco-animate oppanding" >
+				<div class="media block-6 services py-4 d-block text-center oppanding"  style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 20px;" >
+					<a href="{% url 'servantf' pk=i.pk %}">
+					<div class="d-flex justify-content-center"  ><div class="icon"><span class="{{ i.icon }}" ></span></div></div>
 				<div class="media-body p-2 mt-2">
-				  <h3 class="heading mb-3" > {{ i.service_Name }} </h3>
+				  <h3 class="heading mb-3"> {{ i.service_Name }} </h3>
 				  <p>{{ i.service_Description }}</p>
 				</div>
+				</a>
 			  </div> 
+
 			</div>
 			{% endfor %}  		
 			</div>

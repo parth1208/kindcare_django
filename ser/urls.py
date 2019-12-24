@@ -15,5 +15,6 @@ urlpatterns = [
     path('logout/',views.logout_user,name='logout'),
     path('forgot/',views.forget,name='forget'),
     path('cart/<int:pk>',views.cart,name='cart'),
-    path('mycart/',views.my_cart,name='my_cart')
+    path('mycart/',views.my_cart,name='my_cart'),
+    path('servant-list/<int:pk>',views.servantf,name='servantf'),
 ]

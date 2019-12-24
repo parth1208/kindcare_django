@@ -51,7 +51,7 @@ def signin(request):
             login(request,user)
 
             if request.user.is_seller==False:
-                return render(request,'index.html')
+                return redirect(index)
             else:
                 return render(request,'seller/index_admin.html')
         else:
@@ -82,7 +82,7 @@ def signup(request):
                 
                     user =authenticate(username=email,password=password1)
                     login(request,user)
-                    return render(request,'index.html')
+                    return redirect(index)
         else:
              return render(request,'signup.html',{'Message':'missmatched password'})
     else:
@@ -127,3 +127,8 @@ def my_cart(request):
     obj=Cart.objects.filter(buyer=request.user)
     cart_total=Cart.objects.aggregate(Sum('total'))
     return render(request,'cart.html',{'cart':obj,'no':len(obj),'total':cart_total['total__sum']})
+
+def servantf(request,pk):
+    cat=Service_Categary.objects.get(pk=pk)
+    ser=servant.objects.filter(service=cat)
+    return render(request,'servant-list.html',{'ser':ser})

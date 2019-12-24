@@ -23,14 +23,15 @@ class Service_Categary(models.Model):
     def __str__(self):
         return self.service_Name
 
-class Service_list(models.Model):
+class servant(models.Model):
     genderchoice=(
-        ('Male','male'),
-        ('Female','female')
+        ('M','male'),
+        ('F','female')
     )
     service=models.ForeignKey(Service_Categary,related_name='Services',on_delete=models.CASCADE)
     name=models.CharField(max_length=25)
     price=models.IntegerField()
     gender=models.CharField(choices=genderchoice,max_length=25)
     
-
+    def __str__(self):
+        return self.name

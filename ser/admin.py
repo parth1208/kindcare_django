@@ -5,3 +5,4 @@ User=get_user_model()
 # Register your models here.
 admin.site.register(User)
 admin.site.register(Service_Categary)
+admin.site.register(servant)

@@ -46,7 +46,7 @@
 						<span class="price">₹{{ i.Product_Price }}</span>
 					</div>
 				</div>
-				<p>{{ i.Product_Description }}</p>
+				<p>{{ i.Product_Description|slice:":45"  }}</p>
 				<hr>
 				<p class="bottom-area d-flex">
 					<span><i class="flaticon-selection"></i> 250sqft</span>
