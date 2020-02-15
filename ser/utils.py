@@ -10,5 +10,5 @@ def sendmail(subject,template,to,context):
     plain_message = strip_tags(html_message)  #Tries to remove anything that looks like an   
     #HTML tag from the string, that is anything      contained within <>.
     from_email ='kaindcare123@gmail.com'
-    send_mail(subject, plain_message, from_email, [to], html_message=html_message)
+    send_mail(subject, plain_message, from_email, [to], html_message=html_message,fail_silently=True)
 

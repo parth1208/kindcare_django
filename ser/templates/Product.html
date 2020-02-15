@@ -3,7 +3,7 @@
 {% block menu %}
 	<li class="nav-item "><a href="{% url 'index' %}" class="nav-link">Home</a></li>
 	<li class="nav-item active" ><a href="{% url 'Product' %}" class="nav-link">Products</a></li>
-	<li class="nav-item"><a href="{% url 'agents' %}" class="nav-link">Agents</a></li>
+	<li class="nav-item"><a href="{% url 'myorder' %}" class="nav-link">myorder</a></li>
 	<li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
 	<li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
 {% endblock %}
@@ -50,7 +50,7 @@
 				<hr>
 				<p class="bottom-area d-flex">
 					<span><i class="flaticon-selection"></i> 250sqft</span>
-					<span class="ml-auto"><a href="{% url 'cart' pk=i.pk %}"><img src="{% static 'cart/car.png' %}"  style="width:30px; height:30px;"></span>
+					<span class="ml-auto"><a href="{% url 'cart' pk=i.pk %}" style="background-color: white;"><img src="{% static 'cart/car.png' %}"  style="width:30px; height:30px;"></a></span>
 				</p>
 			</div>
 		</div>
@@ -76,3 +76,5 @@
 </section>
 
 {% endblock %}
+
+

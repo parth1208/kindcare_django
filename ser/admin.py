@@ -4,5 +4,7 @@ from .models import *
 User=get_user_model()
 # Register your models here.
 admin.site.register(User)
-admin.site.register(Service_Categary)
+#admin.site.register(Service_Categary)
 admin.site.register(servant)
+admin.site.register(State)
+admin.site.register(City)

@@ -8,7 +8,7 @@ class Category(models.Model):
         ('sell','sell'),
         ('service','service')
     )
-
+    icon=models.CharField(max_length=25,null=True)
     category_type=models.CharField(choices=cat_type,max_length=25)
     category_name=models.CharField(max_length=25)
     category_desc=models.TextField()
@@ -45,3 +45,6 @@ class ProductDetails(models.Model):
 
     def __str__(self):
         return self.product_name
+
+
+

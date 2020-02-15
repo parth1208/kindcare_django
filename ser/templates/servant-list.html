@@ -3,7 +3,7 @@
 {% block menu %}
 	<li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
 	<li class="nav-item" ><a href="{% url 'Product' %}" class="nav-link">Products</a></li>
-	<li class="nav-item"><a href="{% url 'agents' %}" class="nav-link">Agents</a></li>
+	<li class="nav-item"><a href="{% url 'myorder' %}" class="nav-link">myorder</a></li>
 	<li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
 	<li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
 {% endblock %}
@@ -22,10 +22,11 @@
               <table class="table">
                   <thead class="bg-light">
                       <tr class="border-0">
-                          <th class="border-0">name</th>
+                          <th class="border-0">Name</th>
                          
-                          <th class="border-0">price</th>
-                          <th class="border-0">gender</th>
+                          <th class="border-0">Price</th>
+                          <th class="border-0">Gender</th>
+                          <th class="border-0">Order</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -34,6 +35,8 @@
                           <td>{{ ia.name }}</td>
                           <td>₹{{ ia.price }}</td>
                           <td>{{ ia.gender }}</td>
+                          <td><a href="{% url 'servant_detail' pk=ia.pk %}"><input type="submit" value="ORDER"  class="" style="background-color:orange; color:white; width:75px; height:30px; border-radius: 8px;" ></a><br>
+                          </td>
                     </tr>
                        {% endfor %} 
                   </tbody>

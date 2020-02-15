@@ -45,6 +45,8 @@
                                                       <th class="border-0">Price</th>
                                                       <th class="border-0">Discount</th>
                                                       <th class="border-0" >Product Description</th>
+                                                      <th class="border-0">Update</th>
+                                                      <th class="border-0">Delete</th>
                                                   </tr>
                                               </thead>
                                               <tbody>
@@ -76,6 +78,10 @@
                                                       <td>₹{{ user.Product_Price }}</td>
                                                       <td>₹{{ user.discount}}</td>
                                                       <td>{{ user.Product_Description|slice:":15" }}</td>
+                                                      <td><a href="{% url 'updateproduct' pk=user.pk %}"><input type="submit" value="Update"  class="" style="background-color: #109fd1; color:white; width:75px; height:30px; border-radius: 8px;" ></a><br>
+                                                      </td>
+                                                      <td><a href="{% url 'deletproduct' pk=user.pk %}"><input type="submit" value="Delete"  class="" style="background-color:orange; color:white; width:75px; height:30px; border-radius: 8px;" ></a><br>
+                                                      </td>
                                                   </tr>
                                                   {% endfor %}
                                               </tbody>

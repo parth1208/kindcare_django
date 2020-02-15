@@ -3,7 +3,7 @@
 {% block menu %}
 	<li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
 	<li class="nav-item" ><a href="{% url 'Product' %}" class="nav-link">Products</a></li>
-	<li class="nav-item"><a href="{% url 'agents' %}" class="nav-link">Agents</a></li>
+	<li class="nav-item"><a href="{% url 'myorder' %}" class="nav-link">myorder</a></li>
 	<li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
 	<li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
 {% endblock %}
@@ -32,6 +32,7 @@
 
                           <th class="border-0" >Quantity</th>
                           <th class="border-0" >Total</th>
+                          <th class="border-0">Name</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -63,6 +64,7 @@
                            <td>{{ ia.date }}</td>
                           <td>{{ ia.Cart_quantity }}</td>
                           <td>{{ ia.total }}</td>
+                          <td>{{ia.name}}</td>
 
                       </tr>
                        {% endfor %} 
@@ -78,7 +80,7 @@
  Total Pries 
 <h1>₹{{total}}</h1>
 
-<input type="submit" value="ORDER"  class="" style="background-color:orange; color:white; width:75px; height:30px; border-radius: 8px;" ><br>
+<a href="{% url 'order' %}"><input type="submit" value="ORDER"  class="" style="background-color:orange; color:white; width:75px; height:30px; border-radius: 8px;" ></a><br>
 
 </center>
 </div>

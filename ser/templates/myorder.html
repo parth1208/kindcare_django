@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block menu %}
+	<li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+	<li class="nav-item" ><a href="{% url 'Product' %}" class="nav-link">Products</a></li>
+	<li class="nav-item"><a href="{% url 'myorder' %}" class="nav-link">myorder</a></li>
+	<li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+	<li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+{% endblock %}
+{% block content %}
+
+<section class="ftco-section contact-section" style="background-image: url({% static 'images/bg_1.jpg' %});">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+<div class="card" style="border-radius: 8px;">
+    <center><h5 class="card-header">Myorder</h5></center> 
+      <div class="card-body p-0">
+          <div class="table-responsive">
+              <table class="table">
+                  <thead class="bg-light">
+                      <tr class="border-0">
+                        
+                          <th class="border-0" style="width: 10px; height:10px;">Image</th>
+                          <th class="border-0">service</th>
+                         
+                          <th class="border-0">Price</th>
+                          <th class="border-0">Name</th>
+                          <th class="border-0" >Date</th>
+                          <th class="border-0" >time</th>
+                          
+                      </tr>
+                  </thead>
+                  <tbody>
+
+                    {% for ia in obj %}
+                    <tr>
+                    <td>
+                          <img src="{{ ia.servant.image.url }}" style="width:50px; cursor:pointer">
+                    </td>
+                    <td>{{ ia.servant.service.category_name }}</td>
+                        <td>{{ ia.servant.price}}</td>
+                         <td>{{ ia.servant.name }}</td>
+                        <td>{{ ia.data }}</td>
+                        <td>{{ ia.time }}</td>
+                   </tr>
+                     {% endfor %} 
+
+                </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+  <div class="card" style="border-radius: 8px;">
+    <center><h5 class="card-header">Myproducts</h5></center> 
+      <div class="card-body p-0">
+          <div class="table-responsive">
+              <table class="table">
+                  <thead class="bg-light">
+                      <tr class="border-0">
+                        
+                          <th class="border-0" style="width: 10px; height:10px;">Image</th>
+                          <th class="border-0">service</th>
+                         
+                          <th class="border-0">Price</th>
+                          <th class="border-0">quantity</th>
+                          <th class="border-0" >Date</th>
+                          <th class="border-0" >status</th>
+                          
+                      </tr>
+                  </thead>
+                  <tbody>
+
+
+                    {% for ia in order %}
+                   <!-- {{ia.ordered_date}}
+                    {{ia.total_price}}-->
+
+                   
+                        {% for j in product_list %}
+                          {% if j.order_id.id == ia.id %}
+                          <!--{{j.product.product_name}}
+                          {{j.quantity}}-->
+
+                         
+                    <tr>
+                    <td>
+                          <img src="{{ j.product.Product_image.url }}" style="width:50px; cursor:pointer">
+                    </td>
+                    <td>{{ j.product.product_name }}</td>
+                        <td>{{ ia.total_price}}</td>
+                         <td>{{j.product.quantity}}</td>
+                        <td>{{ia.ordered_date }}</td>
+                        <td>{{ ia.status }}</td>
+                   </tr>
+                   {% endif %}
+                   {% endfor %}
+                     {% endfor %} 
+
+                </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center ">
+      <li class="page-item">
+  {% if obj.has_other_pages %}
+      {% if obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ obj.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="disabled page-item"><a class="page-link"> <span>&laquo;</span> </a></li>
+      {% endif %}
+      {% for i in obj.paginator.page_range %}
+        {% if obj.number == i %}
+          <li class=" page-item active">
+            <a class="page-link"> <span>{{ i }} <span class="sr-only">(current)</span></span> </a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ obj.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="disabled "><a class="page-link"><span>&raquo;</span></a></li>
+      {% endif %}
+  {% endif %}   
+</li>
+</ul>
+</nav>      
+</div>
+</div>
+</div>
+</div>
+</section>
+
+{% endblock %}
